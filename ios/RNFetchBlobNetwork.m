@@ -107,8 +107,10 @@ NSOperationQueue *taskQueue;
     self = [super init];
     if(taskQueue == nil) {
         @synchronized([RNFetchBlobNetwork class]) {
-            taskQueue = [[NSOperationQueue alloc] init];
-            taskQueue.maxConcurrentOperationCount = 10;
+            if(taskQueue == nil) {
+                taskQueue = [[NSOperationQueue alloc] init];
+                taskQueue.maxConcurrentOperationCount = 10;
+            }
         }
     }
     return self;
