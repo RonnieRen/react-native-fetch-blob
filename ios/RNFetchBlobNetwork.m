@@ -295,6 +295,10 @@ NSOperationQueue *taskQueue;
     NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
     NSString * respType = @"";
     respStatus = statusCode;
+    if(statusCode >= 400){
+        completionHandler(NSURLSessionResponseCancel);
+        return;
+    }
     if ([response respondsToSelector:@selector(allHeaderFields)])
     {
         NSDictionary *headers = [httpResponse allHeaderFields];
