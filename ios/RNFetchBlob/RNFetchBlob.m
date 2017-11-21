@@ -44,6 +44,11 @@ dispatch_queue_t fsQueue;
 
 RCT_EXPORT_MODULE();
 
++ (BOOL)requiresMainQueueSetup
+{
+    return YES;
+}
+
 - (id) init {
     self = [super init];
     self.filePathPrefix = FILE_PREFIX;
